@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "c568d0c1-4d2d-4542-bc98-c9ce4a8ef6f2",
+		"name": "DiceGame API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41145615"
+	},
+	"item": [
+		{
+			"name": "DiceRollLogs",
+			"item": [
+				{
+					"name": "POST create a new DiceRollLog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"    pm.expect(jsonData).to.have.property(\"diceCount\");",
+									"    pm.expect(jsonData).to.have.property(\"results\");",
+									"    pm.expect(jsonData).to.have.property(\"timestamp\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"diceCount\": 2,\n  \"results\": [3, 5],\n  \"timestamp\": \"2025-01-16T12:00:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/DiceRollLogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"DiceRollLogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all DiceRollLogs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an(\"array\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/DiceRollLogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"DiceRollLogs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DiceRollLog",
+			"item": [
+				{
+					"name": "GET DiceRollLog by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"    pm.expect(jsonData).to.have.property(\"diceCount\");",
+									"    pm.expect(jsonData).to.have.property(\"results\");",
+									"    pm.expect(jsonData).to.have.property(\"timestamp\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/DiceRollLog/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"DiceRollLog",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT update a DiceRollLog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Updated fields are correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.diceCount).to.eql(3);",
+									"    pm.expect(jsonData.results).to.eql([2, 4, 6]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"diceCount\": 3,\n  \"results\": [2, 4, 6],\n  \"timestamp\": \"2025-01-16T15:00:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/DiceRollLog/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"DiceRollLog",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a DiceRollLog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Response body is empty\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/DiceRollLog/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"DiceRollLog",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
