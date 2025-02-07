@@ -1,5 +1,3 @@
-Voici le contenu que vous devez copier et coller dans votre fichier **README.md** :
-
 ---
 
 ```markdown
@@ -17,7 +15,6 @@ L’API fournit plusieurs endpoints pour **créer, lire, modifier et supprimer**
 - **Spring Data JPA**
 - **H2 Database (base de données en mémoire)**
 - **Lombok**
-- **Swagger UI**
 - **Postman (pour les tests d’API)**
 
 ---
@@ -62,18 +59,15 @@ Accédez à la **console H2** via : [http://localhost:8081/h2-console](http://lo
 
 ---
 
-## 📖 Documentation de l’API
-L’API REST est documentée avec **Swagger**.  
-📌 **URL de la documentation Swagger** : [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
+## 📖 Endpoints Disponibles
+L’API propose les endpoints suivants :
 
-### 📌 Endpoints Disponibles
 | Méthode | Endpoint | Description |
 |---------|------------------------|-----------------------------------|
 | **GET** | `/api/DiceRollLogs` | Récupérer tous les lancers de dés |
 | **POST** | `/api/DiceRollLogs` | Créer un nouveau lancer |
 | **GET** | `/api/DiceRollLog/{id}` | Récupérer un lancer spécifique |
 | **PUT** | `/api/DiceRollLog/{id}` | Mettre à jour un lancer existant |
-| **PATCH** | `/api/DiceRollLog/{id}` | Modifier partiellement un lancer |
 | **DELETE** | `/api/DiceRollLog/{id}` | Supprimer un lancer |
 
 ---
@@ -133,14 +127,15 @@ Si vous souhaitez améliorer le projet :
 ---
 
 ### ✅ Instructions pour l’ajout au projet :
-1. Créez un fichier nommé **README.md** à la racine de votre projet.
-2. Copiez-collez ce texte dans le fichier.
+1. **Créer un fichier nommé `README.md`** à la racine de votre projet.
+2. **Copier-coller** ce texte dans le fichier.
 3. **Ajoutez-le à Git** :
    ```bash
    git add README.md
    git commit -m "Ajout du fichier README"
    git push origin main
    ```
-4. Vérifiez sur GitHub que le fichier est bien ajouté.
+4. **Vérifiez sur GitHub** que le fichier est bien ajouté.
 
-Si vous avez des modifications spécifiques à ajouter, faites-moi savoir ! 😊🚀
+Si vous avez des modifications spécifiques à ajouter, dites-le-moi ! 😊🚀
+```
