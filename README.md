@@ -5,7 +5,7 @@
 # 🎲 DiceGame - API REST de gestion des lancers de dés
 
 ## 📌 Description
-DiceGame est une API REST développée en **Spring Boot**, permettant de gérer des lancers de dés et d'enregistrer leurs résultats dans une base de données H2.  
+DiceGame est une API REST développée en **Spring Boot**, permettant de gérer des lancers de dés et d'enregistrer les résultats dans une base de données H2.  
 L’API fournit plusieurs endpoints pour **créer, lire, modifier et supprimer** les enregistrements des lancers de dés.
 
 ---
@@ -69,6 +69,7 @@ L’API propose les endpoints suivants :
 | **POST** | `/api/DiceRollLogs` | Créer un nouveau lancer |
 | **GET** | `/api/DiceRollLog/{id}` | Récupérer un lancer spécifique |
 | **PUT** | `/api/DiceRollLog/{id}` | Mettre à jour un lancer existant |
+| **PATCH** | `/api/DiceRollLog/{id}` | Modifier partiellement un lancer |
 | **DELETE** | `/api/DiceRollLog/{id}` | Supprimer un lancer |
 
 ---
@@ -92,6 +93,18 @@ pm.test("Status code is 200", function () {
 
 pm.test("Response is an array", function () {
     pm.expect(pm.response.json()).to.be.an("array");
+});
+```
+
+Exemple de test pour **PATCH `/api/DiceRollLog/{id}`** :
+```javascript
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response has updated diceCount", function () {
+    const jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property("diceCount", 5);
 });
 ```
 
@@ -138,5 +151,5 @@ Si vous souhaitez améliorer le projet :
    ```
 4. **Vérifiez sur GitHub** que le fichier est bien ajouté.
 
-Si vous avez des modifications spécifiques à ajouter, dites-le-moi ! 😊🚀
+Si vous avez besoin d’ajouter quelque chose, dites-moi ! 😊🚀
 ```
